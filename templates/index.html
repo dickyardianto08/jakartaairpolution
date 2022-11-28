@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Jakarta Air Polution</title>
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+
+  <body>  
+    <div class="container-fluid px-1 py-5 mx-auto">
+      <div class="row d-flex justify-content-center">
+        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+          <h3>KLASIFIKASI POLUSI UDARA DI JAKARTA MENGGUNAKAN METODE RANDOM FOREST CLASSIFIER </h3>
+          <p class="blue-text">Dicky Ardianto - 200411100064<br>Penambangan Data B</p>
+          <p align="justify">Polusi udara merupakan sebuah dampak dari terus bertambahnya aktifitas manusia menggunakan peralatan atau mesin, polusi udara disebabkan oleh bertambah banyaknya emisi gas yang terbuang dari mesin - mesin, dan juga dari aktifitas alam
+            Menurut Kementerian Lingkungan Hidup dan Kehutanan (KLHK) sumber utama terjadinya pencemaran udara di kota-kota besar termasuk DKI Jakarta yaitu penggunaan kendaraan bermotor yang terlalu banyak. Oleh karena itu,
+             masyarakat Jakarta harus mengubah moda transportasi dengan aktif menggunakan transportasi massal agar kualitas udara menjadi lebih baik. Selain itu, kebijakan plat nomor kendaraan ganjil genap juga dapat mengurangi polusi udara di DKI Jakarta. Hal ini diungkapkan oleh Badan Pengelola Transportasi Jabodetabek (BPTJ)
+              dimana semenjak kebijakan tersebut diberlakukan gas CO2 bisa ditekan hingga 28%.
+              Untuk memantau kualitas udara setiap harinya, Dinas Lingkungan Hidup Pemerintah Provinsi DKI Jakarta mengoperasikan Stasiun Pemantau Kualitas Udara (SPKU). Alat tersebut ditempatkan di lima titik yang dinamakan dengan DKI1, DKI2, DKI3, DKI4 dan DKI5. Lima lokasi ini mewakili lima wilayah DKI Jakarta yaitu Bundaran HI, Jakarta Pusat (DKI1), Kelapa Gading, Jakarta Utara (DKI2), Jagakarsa, Jakarta Selatan (DKI3), Lubang Buaya, Jakarta Timur (DKI4), Kebon Jeruk, Jakarta Barat (DKI5).
+              Alat pemantau ini akan menghasilkan data untuk parameter senyawa pencemar seperti Partikel Debu (PM10), Karbon Monoksida (CO), Sulfur Dioksida (SO2), Nitrogen Dioksida (NO2), dan Ozon Permukaan (O3). Data tersebut selanjutnya diolah server yang berada di UPT Laboratorium Lingkungan Hidup Daerah (LLHD) dan diinformasikan sebagai Indeks Standar Pencemaran Udara (ISPU). Berikut ini tabel ISPU berdasarkan tingkat pencemaran udara dan dampak kesehatan bagi manusia.
+          </p> <br> <br>
+          <h3> ABOUT DATASET </h3>
+          <p align="left">pada klasifikasi polusi udara di Jakarta, menggunakan dataset public yang berasal dari kagggle, dengan parameter sebagai berikut :</p>
+          <p align="left">PM10 : Partikulat yang berukuran 10 mikrometer atau lebih kecil</p>
+          <p align="left">SO2  : Sulfur Dioksida, merupakan sebuah gas yang mudah larut dalam air yang berbahaya bagi kesehatan</p>
+          <p align="left">CO   : Carbon Monoksida, merupakan gas dari hasil pembakaran</p>
+          <p align="left">O3   : Ozon, merupakan gas yang membentuk atmosfer bumi</p>
+          <p align="left">NO2  : Nitrogen Dioksida, merupakan gas yang memiliki aroma menyengat dan merupakan polutan udara</p>
+          <p></p>
+          <p><a href="https://www.kaggle.com/code/ipunguhbpwt/jakarta-air-polution-prediction/data">LINK DATASET</a></p>
+          <div class="card">
+            <h5 class="text-center mb-4">Masukkan Inputan Data</h5>
+            <form class="form-card" action="/" method="post" onsubmit="">
+              <div class="row justify-content-between text-left">
+                
+                <div class="form-group col-sm-12 flex-column d-flex">
+                  <label class="form-control-label px-3" for="pm10">PM10<span class="text-danger">*</span></label>
+                  <input type="text" name="pm10" id="pm10" placeholder="" onblur="validate(1)" required>
+                </div>
+                
+                <div class="form-group col-sm-12 flex-column d-flex">
+                  <label class="form-control-label px-3" for="so2">SO2<span class="text-danger">*</span></label> 
+                  <input type="text" name="so2" id="so2" placeholder="" onblur="validate(2)" required>
+                </div>
+                
+                <div class="form-group col-sm-12 flex-column d-flex">
+                  <label class="form-control-label px-3" for="co">CO<span class="text-danger">*</span></label> 
+                  <input type="text" name="co" id="co" placeholder="" onblur="validate(2)" required>
+                </div>
+
+                <div class="form-group col-sm-12 flex-column d-flex">
+                  <label class="form-control-label px-3" for="o3">O3<span class="text-danger">*</span></label> 
+                  <input type="text" name="o3" id="o3" placeholder="" onblur="validate(2)" required>
+                </div>
+
+                <div class="form-group col-sm-12 flex-column d-flex">
+                  <label class="form-control-label px-3" for="no2">NO2<span class="text-danger">*</span></label> 
+                  <input type="text" name="no2" id="no2" placeholder="" onblur="validate(2)" required>
+                </div>
+
+                <div class="form-group col-sm-4 justify-content-center">
+                  <div class="row justify-content-center">
+                    <div class="form-group col-sm-12"> <button type="submit" class="btn-block btn-primary">Prediksi</button> </div>
+                  </div>
+                  
+                </div>
+                <div class="form-group col-sm-12 flex-column d-flex">
+                  <div class="row justify-content-content-center">
+                    <div class="form-group col-12 flex-column d-flex"> Hasil Prediksi adalah {{ prediction_text }} </div>
+                  </div>
+                </div>
+                
+            </form>        
+          </div>
+        </div>
+      </div>
+      
+    </div>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</body>
+</html>
